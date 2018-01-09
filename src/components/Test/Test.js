@@ -7,6 +7,8 @@ import styles from './Users.css';
 import { PAGE_SIZE } from '../../constants';
 
 
+import TestModal from './TestModal';
+
 // 变量定义方式？？？？
 function Test({ dispatch, list2: dataSource, loading, total, page: current }) {
 
@@ -17,7 +19,12 @@ function Test({ dispatch, list2: dataSource, loading, total, page: current }) {
             query: { page },
         }));
     }
-        
+     
+    // 点击新增
+    function createHandler(values) {
+        console.log("点击新增触发")
+        console.log(values)
+      }
     
 
     const columns = [
@@ -47,8 +54,11 @@ function Test({ dispatch, list2: dataSource, loading, total, page: current }) {
     return (
         <div className={styles.normal}>
           <div>
-            <div className={styles.create}>             
-                <Button type="primary">新增</Button>              
+            <div className={styles.create}> 
+
+            <TestModal record={{}} onOk={createHandler}>
+                <Button type="primary">新增</Button>
+            </TestModal>                                       
             </div>
             <Table
                 columns={columns}
