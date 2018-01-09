@@ -38,7 +38,13 @@ function Test({ dispatch, list2: dataSource, loading, total, page: current }) {
             payload: id,
         });
       }
-
+    //   编辑数据
+        function editHandler(id, values) {
+            dispatch({
+            type: 'test/patch',
+            payload: { id, values },
+            });
+        }
 
     const columns = [
         {
@@ -62,6 +68,9 @@ function Test({ dispatch, list2: dataSource, loading, total, page: current }) {
             key: 'operation',
             render: (text, record) => (
               <span className={styles.operation}>
+               <TestModal record={record} onOk={editHandler.bind(null, record.id)}>
+                    <a>编辑</a>
+                </TestModal>
                 <Popconfirm title="Confirm to delete?" onConfirm={deleteHandler.bind(null, record.id)}>
                   <a href="">删除</a>
                 </Popconfirm>

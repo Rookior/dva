@@ -27,6 +27,7 @@ class TestModal extends Component {
 
   okHandler = () => {
     const { onOk } = this.props;
+    console.log(this.props)
     this.props.form.validateFields((err, values) => {
       if (!err) {
         onOk(values);

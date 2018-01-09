@@ -52,6 +52,10 @@ export default {
             yield call(testService.remove, id);
             yield put({ type: 'reload' });
           },
+          *patch({ payload: { id, values } }, { call, put }) {
+            yield call(testService.patch, id, values);
+            yield put({ type: 'reload' });
+          },
         
       },
     //   监听路由变化  触发 effects中的fatch

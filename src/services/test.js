@@ -18,3 +18,10 @@ export function create(values) {
       method: 'DELETE',
     });
   }
+//编辑接口
+export function patch(id, values) {
+    return request(`/api/users/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(values),
+    });
+  }
