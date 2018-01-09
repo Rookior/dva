@@ -47,6 +47,12 @@ export default {
             const page = yield select(state => state.test.page);
             yield put({ type: 'fetch', payload: { page } });
           },
+        //   删除数据接收
+        *remove({ payload: id }, { call, put }) {
+            yield call(testService.remove, id);
+            yield put({ type: 'reload' });
+          },
+        
       },
     //   监听路由变化  触发 effects中的fatch
       subscriptions: {

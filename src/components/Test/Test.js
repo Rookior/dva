@@ -30,7 +30,15 @@ function Test({ dispatch, list2: dataSource, loading, total, page: current }) {
             payload: values,
           });
       }
-    
+      //删除数据
+      function deleteHandler(id) {
+        console.log("点击删除触发")
+        dispatch({
+            type: 'test/remove',
+            payload: id,
+        });
+      }
+
 
     const columns = [
         {
@@ -50,10 +58,16 @@ function Test({ dispatch, list2: dataSource, loading, total, page: current }) {
           key: 'website',
         },
         {
-          title: 'Operation',
-          dataIndex: 'operation',
-          key: 'operation',
-        },
+            title: 'Operation',
+            key: 'operation',
+            render: (text, record) => (
+              <span className={styles.operation}>
+                <Popconfirm title="Confirm to delete?" onConfirm={deleteHandler.bind(null, record.id)}>
+                  <a href="">删除</a>
+                </Popconfirm>
+              </span>
+            ),
+          },
       ];
 
     return (

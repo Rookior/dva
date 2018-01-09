@@ -12,3 +12,9 @@ export function create(values) {
       body: JSON.stringify(values),
     });
   }
+// 删除接口
+  export function remove(id) {
+    return request(`/api/users/${id}`, {
+      method: 'DELETE',
+    });
+  }
