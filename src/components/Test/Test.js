@@ -23,7 +23,12 @@ function Test({ dispatch, list2: dataSource, loading, total, page: current }) {
     // 点击新增
     function createHandler(values) {
         console.log("点击新增触发")
-        console.log(values)
+        console.log(values);
+        // 发出action 触发model/test.js里面的effects中的create
+        dispatch({
+            type: 'test/create',
+            payload: values,
+          });
       }
     
 
