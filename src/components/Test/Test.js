@@ -10,6 +10,13 @@ import { PAGE_SIZE } from '../../constants';
 // 变量定义方式？？？？
 function Test({ dispatch, list2: dataSource, loading, total, page: current }) {
 
+    //为什么会有正确的page  如何实现了页面的分页加载？？？？
+    function pageChangeHandler(page) {
+        dispatch(routerRedux.push({
+            pathname: '/test',
+            query: { page },
+        }));
+    }
         
     
 
@@ -49,6 +56,13 @@ function Test({ dispatch, list2: dataSource, loading, total, page: current }) {
                 loading={loading}
                 rowKey={record => record.id}
                 pagination={false}
+            />
+            <Pagination
+                className="ant-table-pagination"
+                total={total}
+                current={current}
+                pageSize={PAGE_SIZE}
+                onChange={pageChangeHandler}
             />
           </div>
         </div>

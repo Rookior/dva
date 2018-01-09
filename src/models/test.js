@@ -26,7 +26,7 @@ export default {
                 console.log("subscriptions监听路由触发fetch")
                 const { data, headers } = yield call(testService.fetch, { page });
                 console.log({data})
-                // 将获取到的data更新到store
+                // 触发action的行为 save将获取到的data更新到store
                 yield put({
                     type: 'save',
                     payload: {
@@ -37,6 +37,7 @@ export default {
                   });
           },
       },
+    //   监听路由变化
       subscriptions: {
         setup({ dispatch, history }) {
           return history.listen(({ pathname, query }) => {
